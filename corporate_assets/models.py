@@ -51,8 +51,8 @@ class AssetLog(BaseModel):
     asset = models.ForeignKey(
         Asset, on_delete=models.CASCADE, related_name="asset_log"
     )
-    employee = models.ForeignKey(
-        Employee, on_delete=models.CASCADE, related_name="employee_log"
+    employee = models.ManyToManyField(
+        Employee, related_name="employee_log"
     )
     check_out_date = models.DateTimeField()
     return_date = models.DateTimeField(null=True, blank=True)

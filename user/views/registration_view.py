@@ -1,6 +1,5 @@
 from rest_framework.views import APIView
-from rest_framework_simplejwt.tokens import RefreshToken
-from user.serializers import RegistrationSerializer, LoginSerializer
+from user.serializers import RegistrationSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from utils.user_token import get_tokens_for_user
@@ -15,6 +14,6 @@ class UserRegistrationView(APIView):
         user = serializer.save()
         token = get_tokens_for_user(user)
         return Response(
-            {'token':token,'msg':'Registration Successful'},
+            {'token': token, 'message': 'Registration Successful'},
             status=status.HTTP_201_CREATED
         )
